@@ -1,0 +1,134 @@
+# ThoughtShield Configuration
+# Version: 1.0.0
+
+# General Settings
+general:
+  app_name: "ThoughtShield"
+  version: "1.0.0"
+  environment: "production"  # development, staging, production
+  debug: false
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+# Security Settings
+security:
+  audit_level: "enhanced"  # basic, standard, enhanced, paranoid
+  auto_block: true
+  require_authentication: true
+  require_authorization: true
+  rate_limit_enabled: true
+  rate_limit_requests: 100
+  rate_limit_window: 60  # seconds
+
+# Google Cloud Integration
+google_cloud:
+  project_id: "your-google-project-id"
+  location: "us-central1"
+  use_vertex_ai: true
+  vertex_ai_model: "gemini-1.5-pro"
+  enable_thought_signature: true
+
+# Auditor Settings
+auditor:
+  risk_threshold_high: 0.7
+  risk_threshold_medium: 0.4
+  risk_threshold_low: 0.1
+  max_thought_length: 10000
+  enable_semantic_analysis: true
+  enable_intent_detection: true
+  enable_emotion_analysis: false
+
+# Verifier Settings
+verifier:
+  signature_required: true
+  signature_timeout: 30  # seconds
+  enable_jwt_verification: true
+  enable_hmac_verification: true
+  enable_google_signature: true
+
+# Middleware Settings
+middleware:
+  enabled: true
+  port: 8000
+  host: "0.0.0.0"
+  workers: 4
+  timeout: 30  # seconds
+  max_request_size: "10MB"
+
+# Detector Settings
+detector:
+  enabled: true
+  scan_interval: 60  # seconds
+  threat_intelligence_enabled: true
+  anomaly_detection_enabled: true
+  pattern_matching_enabled: true
+
+# Dispatcher Settings
+dispatcher:
+  enabled: true
+  default_action: "allow"  # allow, block, quarantine, alert
+  action_mapping:
+    risk_high: "block"
+    risk_medium: "quarantine"
+    risk_low: "alert"
+  notification_enabled: true
+  notification_channels: ["email", "slack"]
+
+# Database Settings
+database:
+  enabled: true
+  type: "sqlite"  # sqlite, postgresql, mysql, mongodb
+  sqlite_path: "thoughtshield.db"
+  connection_pool_size: 10
+  max_connections: 100
+
+# Cache Settings
+cache:
+  enabled: true
+  type: "memory"  # memory, redis
+  memory_size: "256MB"
+  ttl: 3600  # seconds
+  redis_host: "localhost"
+  redis_port: 6379
+
+# Monitoring Settings
+monitoring:
+  enabled: true
+  metrics_port: 9090
+  health_check_enabled: true
+  health_check_interval: 30  # seconds
+  performance_monitoring: true
+  error_tracking: true
+
+# Logging Settings
+logging:
+  enabled: true
+  log_file: "thoughtshield.log"
+  max_file_size: "100MB"
+  backup_count: 5
+  json_format: true
+  include_traceback: true
+
+# Compliance Settings
+compliance:
+  gdpr_enabled: true
+  ccpa_enabled: true
+  hipaa_enabled: false
+  audit_trail_enabled: true
+  data_retention_days: 365
+
+# API Settings
+api:
+  base_url: "https://api.thoughtshield.ai"
+  version: "v1"
+  rate_limit_enabled: true
+  cors_enabled: true
+  cors_origins: ["*"]
+
+# Feature Flags
+features:
+  thought_signature_analysis: true
+  real_time_monitoring: true
+  automated_response: true
+  threat_intelligence: true
+  compliance_reporting: true
+  multi_tenant_support: false

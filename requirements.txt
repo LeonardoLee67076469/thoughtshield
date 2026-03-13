@@ -1,0 +1,82 @@
+# ThoughtShield - Core Dependencies
+# Version: 1.0.0
+
+## Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+## Security & Cryptography
+cryptography==41.0.7
+pyjwt==2.8.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.1.2
+
+## Google Cloud Integration
+google-cloud-aiplatform==1.38.1
+google-auth==2.23.4
+google-auth-oauthlib==1.1.0
+google-api-python-client==2.108.0
+
+## Monitoring & Logging
+structlog==23.2.0
+prometheus-client==0.19.0
+opentelemetry-api==1.21.0
+opentelemetry-sdk==1.21.0
+opentelemetry-exporter-prometheus==1.21.0
+
+## Database & Caching
+sqlalchemy==2.0.23
+alembic==1.12.1
+redis==5.0.1
+pymongo==4.5.0
+
+## Utilities
+requests==2.31.0
+aiohttp==3.9.1
+httpx==0.25.2
+python-dotenv==1.0.0
+pyyaml==6.0.1
+click==8.1.7
+rich==13.7.0
+tqdm==4.66.1
+
+## Testing (Production dependencies)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+hypothesis==6.92.2
+
+## Performance
+orjson==3.9.10
+uvloop==0.19.0
+httptools==0.6.0
+python-multipart==0.0.6
+
+## Platform Specific
+# For macOS/Linux
+psutil==5.9.6
+# For Windows (optional)
+# pywin32==306
+
+## Optional Dependencies (for specific features)
+# For advanced ML features
+numpy==1.24.4
+pandas==2.1.4
+scikit-learn==1.3.2
+
+# For visualization
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# For web interface
+streamlit==1.29.0
+
+# For CLI enhancements
+typer==0.9.0
+questionary==2.0.1
+
+## Development Dependencies (not required for production)
+# See requirements-dev.txt

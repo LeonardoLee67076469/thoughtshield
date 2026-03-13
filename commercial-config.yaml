@@ -1,0 +1,388 @@
+# ThoughtShield 商业配置
+# 版本: 1.0.0
+
+# 商业模型配置
+business_model:
+  name: "开源核心 + 商业增值"
+  description: "核心功能开源免费，增值服务收费"
+  license:
+    core: "MIT"
+    commercial: "商业许可证"
+    enterprise: "企业许可证"
+  
+  pricing_tiers:
+    community:
+      price: 0
+      currency: "USD"
+      billing_cycle: "免费"
+      features:
+        - "基础安全防护"
+        - "社区支持"
+        - "开源代码访问"
+      limits:
+        agents: 3
+        requests_per_day: 1000
+        storage: "1GB"
+        support: "社区论坛"
+    
+    professional:
+      price: 99
+      currency: "USD"
+      billing_cycle: "月付"
+      features:
+        - "所有社区版功能"
+        - "高级威胁检测"
+        - "团队协作工具"
+        - "优先支持"
+      limits:
+        agents: 10
+        requests_per_day: 10000
+        storage: "10GB"
+        support: "48小时响应"
+      sla: "99.5%"
+    
+    enterprise:
+      price: 499
+      currency: "USD"
+      billing_cycle: "月付"
+      features:
+        - "所有专业版功能"
+        - "定制安全策略"
+        - "专属客户经理"
+        - "现场培训"
+        - "合规认证支持"
+      limits:
+        agents: 100
+        requests_per_day: 100000
+        storage: "100GB"
+        support: "24/7 专属支持"
+      sla: "99.9%"
+    
+    flagship:
+      price: "定制"
+      currency: "USD"
+      billing_cycle: "年付"
+      features:
+        - "所有企业版功能"
+        - "源代码访问"
+        - "定制开发"
+        - "专属安全团队"
+        - "白标解决方案"
+      limits: "无限制"
+      sla: "99.99%"
+
+# 支付配置
+payment:
+  enabled: true
+  providers:
+    stripe:
+      enabled: true
+      mode: "live"  # test, live
+      public_key: "${STRIPE_PUBLIC_KEY}"
+      secret_key: "${STRIPE_SECRET_KEY}"
+      webhook_secret: "${STRIPE_WEBHOOK_SECRET}"
+    
+    paypal:
+      enabled: true
+      mode: "live"
+      client_id: "${PAYPAL_CLIENT_ID}"
+      client_secret: "${PAYPAL_CLIENT_SECRET}"
+    
+    # 中国支付
+    alipay:
+      enabled: true
+      app_id: "${ALIPAY_APP_ID}"
+      private_key: "${ALIPAY_PRIVATE_KEY}"
+    
+    wechat_pay:
+      enabled: true
+      mch_id: "${WECHAT_MCH_ID}"
+      api_key: "${WECHAT_API_KEY}"
+  
+  currencies:
+    - "USD"
+    - "EUR"
+    - "GBP"
+    - "CNY"
+    - "JPY"
+  
+  billing:
+    default_currency: "USD"
+    trial_days: 14
+    grace_period_days: 7
+    auto_renew: true
+    prorate_upgrades: true
+    prorate_downgrades: false
+
+# 订阅管理
+subscription:
+  enabled: true
+  management:
+    provider: "stripe"  # stripe, chargebee, paddle
+    sync_interval: 3600  # 同步间隔（秒）
+  
+  features:
+    - "多订阅支持"
+    - "升级/降级"
+    - "暂停/恢复"
+    - "优惠券"
+    - "发票管理"
+  
+  notifications:
+    trial_ending:
+      days_before: [7, 3, 1]
+    payment_failed:
+      retry_attempts: 3
+      retry_interval_days: [1, 3, 7]
+    subscription_ending:
+      days_before: [30, 14, 7, 3, 1]
+
+# 合作伙伴计划
+partnerships:
+  enabled: true
+  programs:
+    technology:
+      name: "技术合作伙伴"
+      commission_rate: 0.30  # 30%
+      payout_frequency: "monthly"
+      requirements:
+        - "产品集成"
+        - "联合营销"
+        - "技术合作"
+    
+    channel:
+      name: "渠道合作伙伴"
+      commission_rate: 0.20  # 20%
+      payout_frequency: "monthly"
+      requirements:
+        - "销售企业版"
+        - "本地化支持"
+        - "客户成功管理"
+    
+    content:
+      name: "内容合作伙伴"
+      commission_rate: 0.50  # 50%
+      payout_frequency: "per_course"
+      requirements:
+        - "高质量教程"
+        - "官方认证"
+        - "技术内容创作"
+
+# 贡献者收益
+contributor_rewards:
+  enabled: true
+  programs:
+    code_contributions:
+      - type: "feature_development"
+        reward_range: [500, 5000]
+        currency: "USD"
+      - type: "bug_fix"
+        reward_range: [50, 500]
+        currency: "USD"
+      - type: "security_vulnerability"
+        reward_range: [100, 10000]
+        currency: "USD"
+      - type: "documentation"
+        reward_range: [20, 200]
+        currency: "USD"
+    
+    community_contributions:
+      - type: "tutorial_creation"
+        reward_range: [100, 1000]
+        currency: "USD"
+      - type: "translation"
+        reward_range: [50, 500]
+        currency: "USD"
+      - type: "community_management"
+        reward_range: [500, 2000]
+        currency: "USD"
+        frequency: "monthly"
+      - type: "technical_support"
+        reward_range: [30, 100]
+        currency: "USD"
+        unit: "per_hour"
+    
+    research_contributions:
+      - type: "security_research"
+        reward_range: [1000, 10000]
+        currency: "USD"
+      - type: "paper_publication"
+        reward_range: [500, 5000]
+        currency: "USD"
+      - type: "patent_contribution"
+        reward_model: "revenue_share"
+        share_percentage: 10
+      - type: "standard_development"
+        reward_range: [1000, 5000]
+        currency: "USD"
+
+# 营销和获客
+marketing:
+  free_channels:
+    - name: "开源社区"
+      platforms: ["GitHub", "GitLab"]
+      metrics:
+        stars_target: 10000
+        contributors_target: 100
+    
+    - name: "内容营销"
+      platforms: ["博客", "技术媒体", "YouTube"]
+      metrics:
+        articles_per_month: 4
+        video_tutorials: 12
+    
+    - name: "社区建设"
+      platforms: ["Discord", "Slack", "论坛"]
+      metrics:
+        community_members: 5000
+        active_contributors: 100
+  
+  paid_channels:
+    - name: "数字广告"
+      platforms: ["Google Ads", "LinkedIn", "技术媒体"]
+      budget: 5000  # 月预算（USD）
+    
+    - name: "活动营销"
+      platforms: ["会议赞助", "研讨会", "网络研讨会"]
+      budget: 10000  # 季度预算（USD）
+    
+    - name: "合作伙伴营销"
+      platforms: ["联合营销", "推荐计划"]
+      budget: "收入分成"
+
+# 财务目标
+financial_goals:
+  year_2026:
+    mrr_target: 50000  # 月经常性收入（USD）
+    arr_target: 600000  # 年经常性收入（USD）
+    cac_target: 500  # 客户获取成本（USD）
+    ltv_target: 5000  # 客户生命周期价值（USD）
+    churn_rate_target: 0.02  # 月度流失率
+  
+  year_2027:
+    mrr_target: 200000
+    arr_target: 2400000
+    cac_target: 400
+    ltv_target: 8000
+    churn_rate_target: 0.015
+  
+  year_2028:
+    mrr_target: 500000
+    arr_target: 6000000
+    cac_target: 300
+    ltv_target: 12000
+    churn_rate_target: 0.01
+
+# 成本结构
+cost_structure:
+  development: 0.40  # 40%
+  marketing: 0.30    # 30%
+  operations: 0.20   # 20%
+  profit: 0.10       # 10%
+  
+  breakdown:
+    development:
+      - "工程师薪资"
+      - "基础设施"
+      - "工具和软件"
+    
+    marketing:
+      - "广告费用"
+      - "活动赞助"
+      - "内容创作"
+    
+    operations:
+      - "客户支持"
+      - "法律合规"
+      - "行政管理"
+    
+    profit:
+      - "再投资"
+      - "股东分红"
+      - "应急基金"
+
+# 法律和合规
+legal_compliance:
+  licenses:
+    open_source: "MIT"
+    commercial: "商业软件许可证"
+    data_processing: "数据处理协议"
+  
+  compliance:
+    - "GDPR"
+    - "CCPA"
+    - "SOC 2"
+    - "ISO 27001"
+    - "NIST Cybersecurity Framework"
+  
+  data_protection:
+    encryption: "端到端加密"
+    data_retention: 365  # 天
+    backup_frequency: "每日"
+    disaster_recovery: "多区域备份"
+
+# 实施路线图
+roadmap:
+  phase_1: "2026 Q2 - 基础建设"
+    milestones:
+      - "开源核心发布"
+      - "社区建设"
+      - "基础付费功能"
+      - "支付系统集成"
+  
+  phase_2: "2026 Q3-Q4 - 增长扩张"
+    milestones:
+      - "企业版发布"
+      - "合作伙伴计划"
+      - "营销活动启动"
+      - "收入目标: $50,000/月"
+  
+  phase_3: "2027 - 生态建设"
+    milestones:
+      - "市场平台上线"
+      - "培训认证体系"
+      - "国际扩张"
+      - "收入目标: $200,000/月"
+  
+  phase_4: "2028 - 平台化"
+    milestones:
+      - "白标解决方案"
+      - "战略投资"
+      - "行业标准制定"
+      - "收入目标: $500,000/月"
+
+# 监控和报告
+monitoring:
+  kpis:
+    - "月经常性收入 (MRR)"
+    - "年经常性收入 (ARR)"
+    - "客户获取成本 (CAC)"
+    - "客户生命周期价值 (LTV)"
+    - "月度流失率"
+    - "客户满意度 (CSAT)"
+    - "净推荐值 (NPS)"
+  
+  reporting:
+    frequency: "每月"
+    channels: ["管理面板", "电子邮件", "Slack"]
+    recipients: ["管理团队", "投资者", "董事会"]
+
+# 环境变量占位符
+# 实际值应从安全的环境变量中读取
+env_vars:
+  required:
+    - "STRIPE_PUBLIC_KEY"
+    - "STRIPE_SECRET_KEY"
+    - "STRIPE_WEBHOOK_SECRET"
+    - "PAYPAL_CLIENT_ID"
+    - "PAYPAL_CLIENT_SECRET"
+    - "ALIPAY_APP_ID"
+    - "ALIPAY_PRIVATE_KEY"
+    - "WECHAT_MCH_ID"
+    - "WECHAT_API_KEY"
+  
+  optional:
+    - "SENTRY_DSN"
+    - "DATABASE_URL"
+    - "REDIS_URL"
+    - "SMTP_CONFIG"
