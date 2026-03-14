@@ -17,7 +17,7 @@ git clone https://github.com/LeonardoLee67076469/thoughtshield.git
 ## Contact Information
 
 For inquiries, please contact us at: 
-- Email: leonardo@thoughtshield.ai
+- Email: cobralee@163.com
 - [Contact Form]()
 
 ## Original Emails
