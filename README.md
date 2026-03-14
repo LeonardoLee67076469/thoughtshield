@@ -18,15 +18,15 @@ git clone https://github.com/LeonardoLee67076469/thoughtshield.git
 
 For inquiries, please contact us at: 
 - Email: leonardo@thoughtshield.ai
-- [Contact Form](https://thoughtshield.ai/contact)
+- [Contact Form]()
 
 ## Original Emails
 From previous versions, please disregard the following emails which are now replaced: 
-- security@thoughtshield.ai
-- sales@thoughtshield.ai
-- partners@thoughtshield.ai
-- enterprise@thoughtshield.ai
-- investors@thoughtshield.ai
-- contact@thoughtshield.ai
+- cobralee@163.com
+- cobralee@163.com
+- cobralee@163.com
+- cobralee@163.com
+- cobralee@163.com
+- cobralee@163.com 
 
 Thank you for your interest in ThoughtShield!
